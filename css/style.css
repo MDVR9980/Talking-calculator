@@ -1,0 +1,63 @@
+html,
+body {
+	width: 99%;
+	height: 99%;
+}
+
+div {
+	border: 1px solid;
+}
+
+#k1 {
+	border-radius: 20px;
+	border: 3px solid #81b29a;
+}
+
+.test {
+	background-color: #f2cc8f;
+	margin: 0 auto;
+	height: 50%;
+    width: 20%;
+	margin-top: 15%;
+	text-align: center;
+}
+
+input#lcd {
+	color: #f4f1de;
+	border: 3px solid #81b29a;
+	margin-left: -1%;
+	border-bottom: #f2cc8f;
+	background-color: #3d405b;
+	font-size: 18px;
+	display: block;
+	width: 99%;
+	height: 12%;
+	border-radius: 20px;
+}
+
+.o {
+	font-family: tahoma;
+	color: #f4f1de;
+	border: 0px solid;
+	font-size: 14px;
+	font: bold;
+	background-color: #e07a5f;
+	border-radius: 100px;
+	margin-top: 3%;
+	width: 23%;
+	height: 10%;
+	float: left;
+	margin-left: 1.5%;
+}
+
+#oOff,
+#oOn {
+	width: 47%;
+}
+
+.o:hover {
+	cursor: pointer;
+	font-size: 18px;
+	background-color: #81b29a;
+	color: #403d58;
+}

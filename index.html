@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ماشین حساب</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="img/fav.png">
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="test" id="k1">
+        <input id="lcd" name="lcd" value="" disabled="disabled" type="text"><br />
+        <input type="button" value="Off" class="o" id="oOff">
+        <input type="button" value="On" class="o" id="oOn">
+        <input type="button" value="C" class="o" id="oClear">
+        <input type="button" value="<-" class="o" id="oBack">
+        <input type="button" value="%" class="o" id="oR">
+        <input type="button" value="/" class="o" id="oDivide">
+        <input type="button" value="7" class="o" id="o7">
+        <input type="button" value="8" class="o" id="o8">
+        <input type="button" value="9" class="o" id="o9">
+        <input type="button" value="*" class="o" id="oMulti">
+        <input type="button" value="4" class="o" id="o4">
+        <input type="button" value="5" class="o" id="o5">
+        <input type="button" value="6" class="o" id="o6">
+        <input type="button" value="-" class="o" id="oMinus">
+        <input type="button" value="1" class="o" id="o1">
+        <input type="button" value="2" class="o" id="o2">
+        <input type="button" value="3" class="o" id="o3">
+        <input type="button" value="+" class="o" id="oPlus">
+        <input type="button" value="Pow" class="o" id="oPower">
+        <input type="button" value="0" class="o" id="o0">
+        <input type="button" value="." class="o" id="oDot">
+        <input type="button" value="=" class="o" id="oEqual">
+    </div>
+    <script>
+        const lcd = document.getElementById('lcd');
+        var Num1;
+        var Num2;
+        var Opt;
+        var msg = true;
+
+        function playSound(soundFile) {
+            const audio = new Audio(soundFile);
+            audio.play();
+        }
+        function appendToLCD(value) {
+            if (lcd.value === "0") {
+                lcd.value = value;
+            } else {
+                lcd.value += value;
+            }
+        }
+        function handleOperator(op) {
+            Num1 = parseFloat(lcd.value);
+            clearLCD();
+            Opt = op;
+        }
+        function deleteDigit() {
+            var x = lcd.value * 1;
+            x /= 10;
+            lcd.value = parseInt(x);
+        }
+        function Dot() {
+            if (lcd.value == "0") {
+                lcd.value = "0.";
+            }
+            else {
+                appendToLCD(".");
+            }
+        }
+        document.getElementById('o1').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("1");
+                playSound('sounds/1.mp3');
+            }
+        });
+
+        document.getElementById('o2').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("2");
+                playSound('sounds/2.mp3');
+            }
+        });
+
+        document.getElementById('o3').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("3");
+                playSound('sounds/3.mp3');
+            }
+        });
+        document.getElementById('o4').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("4");
+                playSound('sounds/4.mp3');
+            }
+        });
+        document.getElementById('o5').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("5");
+                playSound('sounds/5.mp3');
+            }
+        });
+        document.getElementById('o6').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("6");
+                playSound('sounds/6.mp3');
+            }
+        });
+        document.getElementById('o7').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("7");
+                playSound('sounds/7.mp3');
+            }
+        });
+        document.getElementById('o8').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("8");
+                playSound('sounds/8.mp3');
+            }
+        });
+        document.getElementById('o9').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("9");
+                playSound('sounds/9.mp3');
+            }
+        });
+        document.getElementById('o0').addEventListener('click', () => {
+            if (msg) {
+                appendToLCD("0");
+                playSound('sounds/0.mp3');
+            }
+        });
+
+        document.getElementById('oPlus').addEventListener('click', () => {
+            if (msg) {
+                handleOperator("+");
+                playSound('sounds/Plus.mp3');
+            }
+        });
+        document.getElementById('oMinus').addEventListener('click', () => {
+            if (msg) {
+                handleOperator("-");
+                playSound('sounds/Minus.mp3');
+            }
+        });
+        document.getElementById('oMulti').addEventListener('click', () => {
+            if (msg) {
+                handleOperator("*");
+                playSound('sounds/Multi.mp3');
+            }
+        });
+        document.getElementById('oDivide').addEventListener('click', () => {
+            if (msg) {
+                handleOperator("/");
+                playSound('sounds/Divide.mp3');
+            }
+        });
+        document.getElementById('oR').addEventListener('click', () => {
+            if (msg) {
+                handleOperator("%");
+                playSound('sounds/R.mp3');
+            }
+        });
+        document.getElementById('oPower').addEventListener('click', () => {
+            if (msg) {
+                handleOperator("Pow");
+                playSound('sounds/Power.mp3');
+            }
+        });
+
+        document.getElementById('oClear').addEventListener('click', () => {
+            if (msg) {
+                clearLCD();
+                playSound('sounds/Clear.mp3');
+            }
+        });
+        document.getElementById('oEqual').addEventListener('click', () => {
+            if (msg) {
+                operate();
+                playSound('sounds/Equal.mp3');
+            }
+        });
+        document.getElementById('oBack').addEventListener('click', () => {
+            if (msg) {
+                deleteDigit();
+                playSound('sounds/Back.mp3');
+            }
+        });
+        document.getElementById('oDot').addEventListener('click', () => {
+            if (msg) {
+                Dot();
+                playSound('sounds/Dot.mp3');
+            }
+        });
+        document.getElementById('oOff').addEventListener('click', () => {
+            msg = false;
+            lcd.value = "";
+            playSound('sounds/Off.mp3');
+        });
+        document.getElementById('oOn').addEventListener('click', () => {
+            msg = true;
+            clearLCD();
+            playSound('sounds/On.mp3');
+        });
+        function clearLCD() {
+            lcd.value = "0";
+        }
+        function operate() {
+            Num2 = parseFloat(lcd.value);
+            switch (Opt) {
+                case "+":
+                    lcd.value = Num1 + Num2;
+                    break;
+                case "-":
+                    lcd.value = Num1 - Num2;
+                    break;
+                case "*":
+                    lcd.value = Num1 * Num2;
+                    break;
+                case "/":
+                    lcd.value = Num1 / Num2;
+                    break;
+                case "%":
+                    lcd.value = Num1 % Num2;
+                    break;
+                case "Pow":
+                    lcd.value = Math.pow(Num1, Num2); break;
+                default:
+                    lcd.value = lcd.value;
+            }
+        }
+    </script>
+</body>
+
+</html>
